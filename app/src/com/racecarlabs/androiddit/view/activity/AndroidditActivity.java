@@ -1,15 +1,36 @@
 package com.racecarlabs.androiddit.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.androidquery.AQuery;
 import com.racecarlabs.androiddit.R;
+import com.racecarlabs.androiddit.controller.adapter.SubredditFragmentAdapter;
+import com.viewpagerindicator.TabPageIndicator;
 
 public class AndroidditActivity extends SherlockFragmentActivity {
+
+    private AQuery mAQ;
+
+    private ViewPager mPager;
+
+    private TabPageIndicator mTabs;
+
+    private SubredditFragmentAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_androiddit);
+
+        mAQ = new AQuery(this);
+        
+        mPager = (ViewPager) mAQ.id(R.id.pager).getView();
+        mAdapter = new SubredditFragmentAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mAdapter);
+        
+        mTabs = (TabPageIndicator) mAQ.id(R.id.tabs).getView();
+        mTabs.setViewPager(mPager);
     }
 }
