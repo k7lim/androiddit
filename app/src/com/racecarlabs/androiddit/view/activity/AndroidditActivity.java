@@ -1,4 +1,7 @@
-package com.racecarlabs.androiddit;
+package com.racecarlabs.androiddit.view.activity;
+
+import com.racecarlabs.androiddit.R;
+import com.racecarlabs.androiddit.R.layout;
 
 import android.app.Activity;
 import android.os.Bundle;
