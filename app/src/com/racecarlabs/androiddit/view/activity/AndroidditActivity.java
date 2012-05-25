@@ -27,7 +27,7 @@ public class AndroidditActivity extends SherlockFragmentActivity {
         mAQ = new AQuery(this);
         
         mPager = (ViewPager) mAQ.id(R.id.pager).getView();
-        mAdapter = new SubredditFragmentAdapter(getSupportFragmentManager());
+        mAdapter = new SubredditFragmentAdapter(this, getSupportFragmentManager());
         mPager.setAdapter(mAdapter);
         
         mTabs = (TabPageIndicator) mAQ.id(R.id.tabs).getView();
