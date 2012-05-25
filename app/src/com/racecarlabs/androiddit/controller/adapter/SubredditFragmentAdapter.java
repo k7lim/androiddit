@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.racecarlabs.androiddit.R;
+import com.racecarlabs.androiddit.view.fragment.SubredditDescFragment;
 import com.racecarlabs.androiddit.view.fragment.SubredditPicsFragment;
 
 public class SubredditFragmentAdapter extends FragmentPagerAdapter {
@@ -38,7 +39,8 @@ public class SubredditFragmentAdapter extends FragmentPagerAdapter {
     }
 
     public enum SubredditFragmentType {
-        PICS(R.string.tab_pics, SubredditPicsFragment.class);
+        PICS(R.string.tab_pics, SubredditPicsFragment.class),// photo grid tab
+        DESCRIPTION(R.string.tab_desc, SubredditDescFragment.class); //about page
 
         final int mTitleResId;
 

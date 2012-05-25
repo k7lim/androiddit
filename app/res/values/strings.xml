@@ -3,4 +3,6 @@
 
     <string name="app_name">Androiddit</string>
     <string name="tab_pics">Pics</string>
+    <string name="tab_desc">About</string>
+    
 </resources>
