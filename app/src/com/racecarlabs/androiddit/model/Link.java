@@ -2,7 +2,10 @@ package com.racecarlabs.androiddit.model;
 
 import org.json.JSONObject;
 
+import android.text.TextUtils;
+
 import com.j256.ormlite.field.DatabaseField;
+import com.racecarlabs.androiddit.utils.RedditUtils;
 
 public class Link {
 
@@ -21,7 +24,7 @@ public class Link {
     private static final String JSON_SELFTXT = "selftext";
 
     private static final String JSON_TITLE = "title";
-    
+
     private static final String JSON_NUMCOMMENTS = "num_comments";
 
     private static final String JSON_SCORE = "score";
@@ -52,7 +55,7 @@ public class Link {
 
     @DatabaseField(index = true)
     String subredditName;
-    
+
     @DatabaseField
     boolean isSelf;
 
@@ -82,13 +85,13 @@ public class Link {
 
     @DatabaseField
     String thumbnail;
-    
+
     @DatabaseField
     String permalink;
-    
+
     @DatabaseField
     String url;
-    
+
     @DatabaseField
     String author;
 
@@ -124,6 +127,15 @@ public class Link {
         this.createdUtc = data.optLong(JSON_CREATEDUTC);
         this.isOver18 = data.optBoolean(JSON_ISOVER18);
         this.redditId = data.optString(JSON_REDDITID);
+    }
+
+    public String getImageUrl() {
+
+        if (!TextUtils.isEmpty(this.url) && RedditUtils.isImageUrl(this.url)) {
+            return this.url;
+        }
+
+        return this.thumbnail;
     }
 
 }
