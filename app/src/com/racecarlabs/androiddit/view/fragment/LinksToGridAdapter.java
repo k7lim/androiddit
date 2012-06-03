@@ -4,10 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
@@ -16,6 +19,7 @@ import com.j256.ormlite.dao.Dao;
 import com.racecarlabs.androiddit.R;
 import com.racecarlabs.androiddit.model.Link;
 import com.racecarlabs.androiddit.model.helper.RedditORMHelper;
+import com.racecarlabs.androiddit.view.activity.ImageViewActivity;
 
 public class LinksToGridAdapter extends ArrayAdapter<Link> {
 
@@ -58,10 +62,26 @@ public class LinksToGridAdapter extends ArrayAdapter<Link> {
         AQuery aq = new AQuery(view);
         if (!TextUtils.isEmpty(imgUrl)) {
             aq.image(imgUrl, true, true, mViewSize, R.drawable.ic_launcher, null, AQuery.FADE_IN_NETWORK, 1.0f);
+            aq.clicked(getImageClickListener(imgUrl));
         } else {
             aq.clear();
+            aq.clicked(null);
         }
         return view;
+    }
+
+    private OnClickListener getImageClickListener(final String imgUrl) {
+        return new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent fullPicIntent = new Intent(context, ImageViewActivity.class);
+                fullPicIntent.setData(Uri.parse(imgUrl));
+                v.getContext().startActivity(fullPicIntent);
+            }
+
+        };
     }
 
 }
