@@ -7,3 +7,6 @@
 [submodule "HoloEverywhere"]
 	path = HoloEverywhere
 	url = git://github.com/ChristopheVersieux/HoloEverywhere.git
+[submodule "cwac-anddown"]
+	path = cwac-anddown
+	url = https://github.com/commonsguy/cwac-anddown.git
