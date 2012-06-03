@@ -10,3 +10,4 @@
 [submodule "cwac-anddown"]
 	path = cwac-anddown
 	url = https://github.com/commonsguy/cwac-anddown.git
+	ignore = untracked
