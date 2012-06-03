@@ -5,5 +5,6 @@
     android:layout_height="fill_parent"
     android:gravity="center"
     android:numColumns="auto_fit"
-    android:stretchMode="columnWidth" >
+    android:columnWidth="@dimen/grid_item"
+    android:stretchMode="spacingWidth" >
 </GridView>

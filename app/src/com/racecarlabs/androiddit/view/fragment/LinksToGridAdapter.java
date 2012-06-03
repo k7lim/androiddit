@@ -21,6 +21,8 @@ public class LinksToGridAdapter extends ArrayAdapter<Link> {
 
     private Dao<Link, Integer> mLinkDao;
 
+    private int mViewSize;
+
     public LinksToGridAdapter(Context context, RedditORMHelper ormHelper) {
         super(context, R.layout.item_linkgrid);
 
@@ -31,6 +33,8 @@ public class LinksToGridAdapter extends ArrayAdapter<Link> {
         } catch (SQLException e) {
             Log.w(LinksToGridAdapter.class.getSimpleName(), "Can't load all links!");
         }
+
+        mViewSize = context.getResources().getDimensionPixelSize(R.dimen.grid_item);
 
     }
 
@@ -45,18 +49,18 @@ public class LinksToGridAdapter extends ArrayAdapter<Link> {
     public View getView(int pos, View convertView, ViewGroup parent) {
         View view = convertView;
         if (view == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.item_linkgrid, null);
+            view = LayoutInflater.from(getContext()).inflate(R.layout.item_linkgrid, null, false);
         }
-
         Link currLink = getItem(pos);
 
         String imgUrl = currLink.getImageUrl();
 
+        AQuery aq = new AQuery(view);
         if (!TextUtils.isEmpty(imgUrl)) {
-            AQuery aq = new AQuery(view);
-            aq.id(R.id.pic).image(imgUrl);
+            aq.image(imgUrl, true, true, mViewSize, R.drawable.ic_launcher, null, AQuery.FADE_IN, 1.0f);
+        } else {
+            aq.clear();
         }
-
         return view;
     }
 
