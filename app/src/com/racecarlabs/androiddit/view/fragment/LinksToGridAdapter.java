@@ -57,7 +57,7 @@ public class LinksToGridAdapter extends ArrayAdapter<Link> {
 
         AQuery aq = new AQuery(view);
         if (!TextUtils.isEmpty(imgUrl)) {
-            aq.image(imgUrl, true, true, mViewSize, R.drawable.ic_launcher, null, AQuery.FADE_IN, 1.0f);
+            aq.image(imgUrl, true, true, mViewSize, R.drawable.ic_launcher, null, AQuery.FADE_IN_NETWORK, 1.0f);
         } else {
             aq.clear();
         }
