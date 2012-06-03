@@ -69,4 +69,8 @@ public class Subreddit {
         this.redditId = data.optString(JSON_REDDITID);
     }
 
+    public String getMarkdownDescription() {
+        return descMarkDown;
+    }
+
 }
