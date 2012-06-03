@@ -47,9 +47,6 @@ public class Link {
 
     private static final String JSON_REDDITID = "id";
 
-    @DatabaseField(generatedId = true)
-    int id;
-
     @DatabaseField(index = true)
     String subredditId;
 
@@ -101,7 +98,7 @@ public class Link {
     @DatabaseField
     boolean isOver18;
 
-    @DatabaseField(index = true)
+    @DatabaseField(id = true)
     String redditId;
 
     Link() {

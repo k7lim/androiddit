@@ -26,9 +26,6 @@ public class Subreddit {
 
     private static final String JSON_REDDITID = "id";
 
-    @DatabaseField(generatedId = true)
-    int id;
-
     @DatabaseField(index = true)
     String title;
 
@@ -53,7 +50,7 @@ public class Subreddit {
     @DatabaseField
     int subscribers;
 
-    @DatabaseField(index = true)
+    @DatabaseField(id = true)
     String redditId;
 
     Subreddit() {
