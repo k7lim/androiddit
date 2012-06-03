@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.androidquery.AQuery;
 import com.racecarlabs.androiddit.R;
+import com.racecarlabs.androiddit.controller.adapter.LinksToGridAdapter;
 
 public class SubredditPicsFragment extends AbsSubredditFragment {
     

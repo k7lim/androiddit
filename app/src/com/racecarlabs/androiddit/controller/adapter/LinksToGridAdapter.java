@@ -1,4 +1,4 @@
-package com.racecarlabs.androiddit.view.fragment;
+package com.racecarlabs.androiddit.controller.adapter;
 
 import java.sql.SQLException;
 import java.util.List;
