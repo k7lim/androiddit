@@ -1,5 +1,6 @@
 package com.racecarlabs.androiddit.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
@@ -7,6 +8,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.androidquery.AQuery;
 import com.racecarlabs.androiddit.R;
 import com.racecarlabs.androiddit.controller.adapter.SubredditFragmentAdapter;
+import com.racecarlabs.androiddit.service.RedditDownloadService;
 import com.viewpagerindicator.TabPageIndicator;
 
 public class AndroidditActivity extends SherlockFragmentActivity {
@@ -32,5 +34,8 @@ public class AndroidditActivity extends SherlockFragmentActivity {
         
         mTabs = (TabPageIndicator) mAQ.id(R.id.tabs).getView();
         mTabs.setViewPager(mPager);
+        
+        Intent updateIntent = new Intent(this, RedditDownloadService.class);
+        startService(updateIntent);
     }
 }
