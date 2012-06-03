@@ -21,7 +21,7 @@ public class RedditDownloadService extends IntentService {
 
     private static final String EXTRA_SUBREDDITNAME = "extras.service.subreddit";
 
-    private static final String TEMPLATE_URL = "http://www.reddit.com/r/%s.json?sort=%s";
+    private static final String TEMPLATE_URL = "http://www.reddit.com/r/%s.json?sort=%s&limit=%d";
 
     private static final String TEMPLATE_ABOUT_URL = "http://www.reddit.com/r/%s/about.json";
 
@@ -29,7 +29,9 @@ public class RedditDownloadService extends IntentService {
 
     private static final String DEFAULT_SUBREDDIT = "pics";
 
-    protected static final long DEFAULT_CACHE_EXPIRY = 1000 * 60 * 60 * 12; // 12 hours in millis
+    private static final long DEFAULT_CACHE_EXPIRY = 1000 * 60 * 60 * 12; // 12 hours in millis
+    
+    private static final int DEFAULT_PAGESIZE = 100;
 
     private AQuery mAQ;
 
@@ -53,14 +55,13 @@ public class RedditDownloadService extends IntentService {
         String aboutUrl = getAboutUrl(subreddit);
         mAQ.ajax(aboutUrl, JSONObject.class, mAboutCallback);
 
-        String sort = PARAM_SORT_HOT;
-        String linksUrl = getDownloadUrl(subreddit, sort);
+        String linksUrl = getDownloadUrl(subreddit, PARAM_SORT_HOT, DEFAULT_PAGESIZE);
         mAQ.ajax(linksUrl, JSONObject.class, mLinksCallback);
 
     }
 
-    private String getDownloadUrl(String subreddit, String sort) {
-        return String.format(TEMPLATE_URL, subreddit, sort);
+    private String getDownloadUrl(String subreddit, String sort, int count) {
+        return String.format(TEMPLATE_URL, subreddit, sort, count);
     }
 
     private String getAboutUrl(String subreddit) {
